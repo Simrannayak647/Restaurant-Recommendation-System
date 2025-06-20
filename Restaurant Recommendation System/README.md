@@ -1,4 +1,4 @@
-##🍽️ Restaurant Recommendation System **
+🍽️ Restaurant Recommendation System 
 📌 Project Description
 This project presents an intelligent Restaurant Recommendation System designed to help users make smarter dining choices. The system suggests restaurants based on:
 
@@ -25,7 +25,6 @@ The system dynamically adapts to input and geo-location data to generate accurat
  <img src="https://drive.google.com/uc?export=view&id=198vsiW24dMOjFzE5roUvwiLdrcfe_nKt" width="800" alt="Home Page"> </p>
 📝 Input Page
 <p align="center">
-
  <img src="https://drive.google.com/uc?export=view&id=1ASQvbRIgYDzxWXl7yeHjMjUC2H4kGw7D" width="800" alt="Input Page"> 
  </p>
 📊 Recommendation Output
