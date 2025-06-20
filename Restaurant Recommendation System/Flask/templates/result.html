@@ -1,0 +1,536 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurant Recommendation System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #ff6b6b;
+            --primary-dark: #ff5252;
+            --secondary: #4ecdc4;
+            --dark: #1a1a2e;
+            --darker: #16213e;
+            --light: #f8f9fa;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Background Elements */
+        .background-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--secondary), transparent);
+            opacity: 0.1;
+        }
+
+        .circle:nth-child(1) {
+            width: 800px;
+            height: 800px;
+            top: -300px;
+            right: -200px;
+        }
+
+        .circle:nth-child(2) {
+            width: 600px;
+            height: 600px;
+            bottom: -200px;
+            left: -150px;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            font-size: 28px;
+            color: var(--primary);
+        }
+
+        .logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--light);
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            border-radius: 30px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a.active {
+            background: var(--glass);
+            color: var(--primary);
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 5px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        /* Main Content */
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: calc(100vh - 80px);
+            padding: 40px 5%;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 40px;
+            max-width: 800px;
+        }
+
+        .results-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #ffffff, #ffd8d8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .results-header p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .results-container {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 1200px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .results-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 35px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .results-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .results-table th {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-align: left;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .results-table th:first-child {
+            border-top-left-radius: 15px;
+        }
+
+        .results-table th:last-child {
+            border-top-right-radius: 15px;
+        }
+
+        .results-table td {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .results-table tbody tr {
+            transition: var(--transition);
+        }
+
+        .results-table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.03);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .results-table tbody tr:hover td {
+            color: white;
+        }
+
+        .restaurant-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .restaurant-name i {
+            color: var(--primary);
+        }
+
+        .cuisines {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .cuisine-tag {
+            background: rgba(78, 205, 196, 0.15);
+            color: var(--secondary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stars {
+            display: flex;
+            gap: 2px;
+            color: #ffc107;
+        }
+
+        .rating-value {
+            font-weight: 600;
+            font-size: 1.1rem;
+            background: linear-gradient(to right, #ffd700, #ffb700);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .cost {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cost i {
+            color: var(--secondary);
+        }
+
+        .action-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: var(--light);
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .action-btn:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .results-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .new-search-btn {
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(255, 82, 82, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .new-search-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 82, 82, 0.4);
+        }
+
+        .results-count {
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 1.5rem;
+            color: var(--primary);
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-icon:nth-child(1) {
+            top: 30px;
+            left: 30px;
+            animation-delay: 0s;
+        }
+
+        .floating-icon:nth-child(2) {
+            bottom: 40px;
+            right: 40px;
+            animation-delay: 2s;
+        }
+
+        .floating-icon:nth-child(3) {
+            top: 50%;
+            left: 40px;
+            animation-delay: 1s;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .results-container {
+                overflow-x: auto;
+            }
+            
+            .results-table {
+                min-width: 800px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .results-container {
+                padding: 25px;
+            }
+            
+            .results-header h2 {
+                font-size: 2.2rem;
+            }
+            
+            .results-table th, 
+            .results-table td {
+                padding: 15px;
+            }
+            
+            .results-footer {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .results-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .results-header p {
+                font-size: 1rem;
+            }
+            
+            .results-table th, 
+            .results-table td {
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+            
+            .restaurant-name {
+                font-size: 1rem;
+            }
+            
+            .cuisine-tag {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-elements">
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+
+    <header>
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-utensils"></i>
+            </div>
+            <h1>EpicEats</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#" class="active">Recommendations</a></li>
+                <li><a href="#">Top Restaurants</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="results-header">
+            <h2>Top Recommended Restaurants</h2>
+            <p>Based on your preferences and our AI analysis, here are the perfect dining experiences for you</p>
+        </div>
+
+        <div class="results-container">
+            <i class="fas fa-star floating-icon"></i>
+            <i class="fas fa-heart floating-icon"></i>
+            <i class="fas fa-crown floating-icon"></i>
+
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Cuisines</th>
+                        <th>Mean Rating</th>
+                        <th>Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for restaurant in recommended_restaurants %}
+                    <tr>
+                        <td>
+                            <div class="restaurant-name">
+                                <i class="fas fa-utensils"></i>
+                                {{ restaurant.name }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cuisines">
+                                {% for cuisine in restaurant.cuisines.split(',') %}
+                                    <span class="cuisine-tag">{{ cuisine.strip() }}</span>
+                                {% endfor %}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="rating">
+                                <div class="stars">
+                                {% for i in range(restaurant['Mean Rating']|round(0, 'floor')|int) %}
+    <i class="fas fa-star"></i>
+{% endfor %}
+
+                                    {% if restaurant['Mean Rating'] % 1 >= 0.5 %}
+                                        <i class="fas fa-star-half-alt"></i>
+                                    {% endif %}
+                                </div>
+                                <span class="rating-value">{{ restaurant['Mean Rating'] }}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cost">
+                                <i class="fas fa-money-bill-wave"></i>
+                                ₹{{ restaurant.cost }}
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
