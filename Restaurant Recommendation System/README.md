@@ -24,15 +24,15 @@ The system dynamically adapts to input and geo-location data to generate accurat
  Home Page
 <p align="center">
 
- <img src="https://drive.google.com/uc?export=view&id=198vsiW24dMOjFzE5roUvwiLdrcfe_nKt" width="800" alt="Home Page"> 
+ <img src="https://drive.google.com/uc?export=view&id=198vsiW24dMOjFzE5roUvwiLdrcfe_nKt" width="900" alt="Home Page"> 
  </p>
  Input Page
 <p align="center">
- <img src="https://drive.google.com/uc?export=view&id=1ASQvbRIgYDzxWXl7yeHjMjUC2H4kGw7D" width="800" alt="Input Page"> 
+ <img src="https://drive.google.com/uc?export=view&id=1ASQvbRIgYDzxWXl7yeHjMjUC2H4kGw7D" width="900" alt="Input Page"> 
  </p>
  Recommendation Output
 <p align="center"> 
-<img src="https://drive.google.com/uc?export=view&id=1MzZvnK9bnpfMscLcJTGuGzLBZxsiERjG" width="800" alt="Recommendation Output">
+<img src="https://drive.google.com/uc?export=view&id=1MzZvnK9bnpfMscLcJTGuGzLBZxsiERjG" width="900" alt="Recommendation Output">
  </p>
 
 ## **Installation and Setup**
