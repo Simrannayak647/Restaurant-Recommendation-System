@@ -1,27 +1,38 @@
-# **Restaurant Recommendation System**
----
+##🍽️ Restaurant Recommendation System **
+📌 Project Description
+This project presents an intelligent Restaurant Recommendation System designed to help users make smarter dining choices. The system suggests restaurants based on:
 
-## **Project Description**
-- This project focuses on developing a smart restaurant recommendation system that delivers personalized suggestions based on user preferences, budget, dietary restrictions, and current location.
-- A hybrid recommendation model combining **collaborative filtering** and **content-based filtering** techniques is implemented to provide accurate and relevant results.
-- The system adapts dynamically based on user inputs and geolocation data, enhancing the user's decision-making process when exploring dining options.
+User preferences (like food type, ambiance)
+
+Budget
+
+Dietary restrictions
+
+Current location
+
+A hybrid recommendation model has been implemented, combining the power of:
+
+Collaborative Filtering (user-based insights)
+
+Content-Based Filtering (restaurant metadata)
+
+The system dynamically adapts to input and geo-location data to generate accurate and relevant restaurant recommendations.
 
 ## **Screenshots**
-
-### Home Page:
+🏠 Home Page
 <p align="center">
-<img src="https://drive.google.com/uc?export=view&id=1A7LQAsf-VSwH9aaV3Hoe6HNFSkcW75xA" width="800" alt="Image 2">
-</p>
 
-### Input Page:
+ <img src="https://drive.google.com/uc?export=view&id=198vsiW24dMOjFzE5roUvwiLdrcfe_nKt" width="800" alt="Home Page"> </p>
+📝 Input Page
 <p align="center">
- <img src="https://drive.google.com/uc?export=view&id=1UdSUpmxsSX8U4m-FUajcVXhyxH7Hbbcp" width="800" alt="Image 1">
-</p>
 
-### Recommendation Output:
-<p align="center">
- <img src="https://drive.google.com/uc?export=view&id=1HuFP_R1lDc6fNU0wAM5POq5HwfuipjEI" width="800" alt="Image 3">
-</p>
+ <img src="https://drive.google.com/uc?export=view&id=1ASQvbRIgYDzxWXl7yeHjMjUC2H4kGw7D" width="800" alt="Input Page"> 
+ </p>
+📊 Recommendation Output
+<p align="center"> 
+
+<img src="https://drive.google.com/uc?export=view&id=1MzZvnK9bnpfMscLcJTGuGzLBZxsiERjG" width="800" alt="Recommendation Output">
+ </p>
 
 ## **Installation and Setup**
 
@@ -30,11 +41,12 @@
 # Create a new conda environment
 conda create -n restaurant_recommender python=3.10
 
+
 # Activate the environment
 conda activate restaurant_recommender
 
 # Clone the repository
-git clone https://github.com/prajwalnikam/ADS-Restaurant-recommendation-System.git
+git clone https://github.com/Simrannayak647/Restaurant-Recommendation-System.git
 cd Restaurant-Recommendation-System/Flask
 
 # Install dependencies
@@ -61,7 +73,7 @@ pip install -r requirements.txt
 cd Flask
 
 # Run the Flask web application
-python app1.py
+python app.py
 
 # Visit http://localhost:5000 to access the app
 ```
@@ -69,7 +81,7 @@ python app1.py
 
 ```bash
 Restaurant-Recommendation-System/
-├── Documentation...
+├── 6.Final Report & Demo Link
 ├── Flask/
 │   ├── __pycache__/                # Compiled Python cache files
 │   ├── static/                     # Static assets (Images)
@@ -82,40 +94,45 @@ Restaurant-Recommendation-System/
     └── Final_Development_Phase.ipynb  # Model training and evaluation notebook
 ```
 
-## **Technologies Used**
-- **Python 3.10** – Core programming language
-- **Flask** – Lightweight web framework to build the backend API
-- **Scikit-learn** – For building and evaluating machine learning models
-- **Surprise** – Specialized library for collaborative filtering (e.g., SVD)
-- **Pandas / NumPy** – For data manipulation and preprocessing
-- **NLTK** – For natural language processing and cleaning review text
-- **Matplotlib / Seaborn / Plotly** – For data visualization and EDA
-- **HTML / CSS / JavaScript** – For designing the frontend interface
+## **🧰 Technologies Used**
+- **Category**	Tools & Libraries
+- **Language**	Python 3.10
+-**Web Framework**	Flask
+-**ML/Recommendation**	Scikit-learn, Surprise (SVD)
+-**Data Handling**	Pandas, NumPy
+-**NLP	NLTK**
+-**Visualization**	Matplotlib, Seaborn, Plotly
+-**Frontend**	HTML, CSS, JavaScript
 
 ---
 
 ## **Model Architecture**
 This project uses a **Hybrid Recommendation Model** combining the strengths of:
 
-### 🔹 Content-Based Filtering
-- Analyzes restaurant attributes like cuisine type, average cost, rating, and delivery option.
-- Matches these with user-stated preferences to recommend relevant restaurants.
+###🔹 Content-Based Filtering
 
-### 🔹 Collaborative Filtering (SVD)
-- Uses historical user rating data to find similar users and suggest restaurants based on collective behavior.
-- Implemented using the `Surprise` library's Singular Value Decomposition (SVD) algorithm.
+Matches restaurants to user preferences (cuisine, rating, price).
 
-### 🔹 Hybrid Approach
-- Merges both filtering strategies to solve the cold-start and sparsity problems.
-- Balances personalization with discovery of new or less popular options.
+###🔹 Collaborative Filtering (SVD)
 
+Suggests restaurants based on similar user behaviors.
+
+###🔹 Hybrid Model (Selected)
+
+Combines both approaches for accuracy and personalization.
+
+Solves cold-start and sparsity issues.
+---
 ## **Dataset**
 The dataset is sourced from **Kaggle** and titled:
 
 > [Zomato Bangalore Restaurants Dataset by Himanshu Poddar](https://www.kaggle.com/datasets/himanshupoddar/zomato-bangalore-restaurants)
 
-## **Conclusion**
-This project successfully demonstrates how **machine learning and recommendation systems** can simplify dining decisions by tailoring restaurant suggestions to user preferences and behavior. It offers a powerful and adaptive solution for users in both familiar and unfamiliar areas. The hybrid model ensures balance between personalized results and discovery of new options. This project lays the foundation for more advanced, real-time, and location-aware food recommendation engines.
+
+### **📌 Conclusion**
+
+This system simplifies the task of choosing a restaurant by offering intelligent, data-driven suggestions based on user needs. It bridges the gap between decision fatigue and enjoyable dining. The hybrid recommendation model ensures accuracy, diversity, and scalability.
+
 
 
 
