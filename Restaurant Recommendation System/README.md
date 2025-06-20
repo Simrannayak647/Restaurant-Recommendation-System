@@ -1,35 +1,37 @@
-🍽️ Restaurant Recommendation System 
-📌 Project Description
-This project presents an intelligent Restaurant Recommendation System designed to help users make smarter dining choices. The system suggests restaurants based on:
+# **Restaurant Recommendation System**
+---
+## **Project Description**
 
-User preferences (like food type, ambiance)
+-This project presents an intelligent Restaurant Recommendation System designed to help users make smarter dining choices. The system suggests restaurants based on:
 
-Budget
+-User preferences (like food type, ambiance)
 
-Dietary restrictions
+-Budget
 
-Current location
+-Dietary restrictions
 
-A hybrid recommendation model has been implemented, combining the power of:
+-Current location
 
-Collaborative Filtering (user-based insights)
+-A hybrid recommendation model has been implemented, combining the power of:
 
-Content-Based Filtering (restaurant metadata)
+-Collaborative Filtering (user-based insights)
+
+-Content-Based Filtering (restaurant metadata)
 
 The system dynamically adapts to input and geo-location data to generate accurate and relevant restaurant recommendations.
 
 ## **Screenshots**
-🏠 Home Page
+ Home Page
 <p align="center">
 
- <img src="https://drive.google.com/uc?export=view&id=198vsiW24dMOjFzE5roUvwiLdrcfe_nKt" width="800" alt="Home Page"> </p>
-📝 Input Page
+ <img src="https://drive.google.com/uc?export=view&id=198vsiW24dMOjFzE5roUvwiLdrcfe_nKt" width="800" alt="Home Page"> 
+ </p>
+ Input Page
 <p align="center">
  <img src="https://drive.google.com/uc?export=view&id=1ASQvbRIgYDzxWXl7yeHjMjUC2H4kGw7D" width="800" alt="Input Page"> 
  </p>
-📊 Recommendation Output
+ Recommendation Output
 <p align="center"> 
-
 <img src="https://drive.google.com/uc?export=view&id=1MzZvnK9bnpfMscLcJTGuGzLBZxsiERjG" width="800" alt="Recommendation Output">
  </p>
 
